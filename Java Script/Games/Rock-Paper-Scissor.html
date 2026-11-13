@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Rock Paper Scissor Game</title>
+</head>
+<style>
+  
+  .rock-button {
+    background: #2563EB;
+    color: white;
+    border-radius: 2px;
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  .rock-button:hover {
+    background-color: darkblue;
+    transform: scale(1.05);
+  }
+
+  .paper-button {
+    background: #16A34A;
+    color: white;
+    border-radius: 2px;
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  .paper-button:hover {
+    background-color: darkgreen;
+    transform: scale(1.05);
+  }
+
+  .scissor-button {
+    background: #9333EA;
+    color: white;
+    border-radius: 2px;
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  .scissor-button:hover {
+    background-color: rgba(89, 3, 118, 0.578);
+    transform: scale(1.05);
+  }
+
+  .reset-button {
+    background:#DC2626;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .reset-button:hover {
+    background-color: darkred;
+    transform: scale(1.05);
+  }
+
+  .text {
+    font-weight: bold;
+    font-family:monospace;
+    font-size: 15px;
+  }
+
+</style>
+
+<p class="text">Play and have Fun. 💛</p>
+<body>
+  <button class="rock-button", onclick="
+    playerMove = 'Rock';
+    pickComputerMove();
+    gameResult();
+
+    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}.
+Wins: ${score.Won}, Losses: ${score.Lose}, Ties: ${score.Tie}.
+    `);
+    
+  ">Rock</button>
+
+  <button class="paper-button", onclick="
+    playerMove = 'Paper';
+    pickComputerMove();
+    gameResult();
+
+    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}.
+Wins: ${score.Won}, Losses: ${score.Lose}, Ties: ${score.Tie}.
+    `);
+
+  ">Paper</button>
+
+  <button class="scissor-button", onclick="
+    playerMove = 'Scissor';
+    pickComputerMove();
+    gameResult();
+
+    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}.
+Wins: ${score.Won}, Losses: ${score.Lose}, Ties: ${score.Tie}.
+    `);
+
+  ">Scissor</button>
+
+  <button class="reset-button", onclick="
+    score.Won = 0;
+    score.Lose = 0;
+    score.Tie = 0;
+
+    alert(`You score has been reset
+Wins: 0, Losses: 0, Ties: 0.`)
+  ">Reset Score</button>
+
+</body>
+<script>
+  
+  let computerMove = '';
+  let result = '';
+  let playerMove = '';
+
+  function pickComputerMove() {
+    const randomNumber = Math.random();
+
+    if (randomNumber >= 0 && randomNumber < 1/3) {
+      computerMove = 'Rock'
+    }
+    else if (randomNumber >= 1/3 && randomNumber < 2/3) {
+      computerMove = 'Paper'
+    }
+    else if (randomNumber <= 2/3 && randomNumber < 1) {
+      computerMove = 'Scissor'
+    }
+  };
+
+  function gameResult() {
+    if (playerMove === 'Rock' && computerMove === 'Scissor') {
+      result = 'You won.'
+    }
+    else if (playerMove === 'Paper' && computerMove === 'Rock') {
+      result = 'You won.'
+    }
+    else if (playerMove === 'Scissor' && computerMove === 'Paper') {
+      result = 'You won.'
+    }
+    else if (playerMove === computerMove) {
+      result = 'Tie.'
+    }
+    else {
+      result = 'You lose.'
+    }
+
+    if (result === 'You won.') {
+      score.Won ++;
+    }
+    else if (result === 'You lose.') {
+      score.Lose ++;
+    }
+    else if (result === 'Tie.') {
+      score.Tie ++;
+    }
+  };
+
+  const score = {
+    Won: 0,
+    Lose: 0,
+    Tie: 0
+  };
+
+  localStorage.setItem('Score', JSON.stringify(score));
+  JSON.parse(localStorage.getItem('Score'));
+
+  /* Algorithm:
+First of all we need to breakdown each step how we gonna create the game
+
+1 - Create Button (Through HTML)
+
+2 - Make Button intearactive (Through JS)
+  2.1 when we click there should be our move and computer (random) move
+  2.2 Then compare the moves
+  2.3 
+
+3 - Alert on screen the result
+4 - Save the Score  
+5 - Set resret button so score can be 0
+*/
+</script>
+</html>

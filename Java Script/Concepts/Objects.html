@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Object Prectice - 8</title>
+  </head>
+  <body></body>
+  <script>
+
+    // Lession 8 - version1
+    const object1 = {
+      name: 'basketball',
+      price: 2095,
+      [ 'delivery-time' ]:  '3 days'
+    };
+    console.log(object1);
+
+    object1.price += 500
+    console.log(object1)
+
+    // Object compare
+    const product1 = {
+      name: 'Attack 9',
+      price: 1600
+    }
+
+    const product2 = {
+      name: '27 i',
+      price: 1900
+    }
+
+    if (product1.price < product2.price) {
+      console.log(product1)
+    }
+    else {
+     console.log(product2)
+    }
+
+    // Lession 8 - version2
+    const product3 = {
+      name: 'football',
+      price: 3000
+    }
+
+    const product4 = {
+      name: 'football',
+      price: 3000
+    }
+
+    function isSameProduct() {
+      if(product3 === product4) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+    console.log(isSameProduct())
+
+    console.log('Good morning'.toLowerCase());
+    console.log('Good morning'.repeat(5));
+
+    // challenge exercies
+    
+
+  </script>
+</html>

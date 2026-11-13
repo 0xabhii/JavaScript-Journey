@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+  <head></head>
+  <body>
+
+    <button onclick="
+      
+       pickComputerMove();
+       if (computerMove === 'Head') 
+        { 
+          result = 'You won';
+        }
+        else if (computerMove === 'Tails') {
+          result = 'You lose';
+        }
+
+        updateScore();
+
+         alert(`You picked Head. The result is ${computerMove}. ${result}.
+Wins: ${score.wins}. Losess: ${score.losses}`);
+
+      ">Head</button>
+    <button onclick="
+
+        pickComputerMove();
+        if (computerMove === 'Tails') 
+        { 
+          result = 'You won';
+        }
+        else if (computerMove === 'Head') {
+          result = 'You lose';
+        }
+        
+        updateScore();
+
+         alert(`You picked Tails. The result is ${computerMove}. ${result}.
+Wins: ${score.wins}. Losess: ${score.losses}`);
+
+    ">Tails</button>
+
+    <script>
+      let result = '';
+      let computerMove = '';
+
+      const score = {
+        wins: 0,
+        losses: 0
+      }
+
+      localStorage.setItem('score', JSON.stringify(score));
+      JSON.parse(localStorage.getItem('score'));
+
+      function updateScore () {
+        if (result === 'You won') {
+          score.wins ++;
+        }
+        else if (result === 'You lose') {
+          score.losses ++;
+        }
+    }
+      function pickComputerMove() {
+        const randomNumber = Math.random();
+
+        if (randomNumber >= 0 && randomNumber < 0.5) {
+          computerMove = 'Head';
+        }
+        else if (randomNumber >= 0.5 && randomNumber < 1) {
+          computerMove = 'Tails';
+        }
+      };
+
+    </script>
+  </body>
+</html>
